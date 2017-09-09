@@ -1,14 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      My camera
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> 
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<ion-content padding>	
+
+<img src="img/default_user.jpg">
+
+<button ion-button  full color="danger" (click)=itemTapped() > <ion-icon name="camera"></ion-icon> Take image</button>
+
+<button ion-button full color="secondary" (click)=itemTapped() ><ion-icon name="cloud-upload">   </ion-icon>  Share to FB! </button>
+  </ion-content>
