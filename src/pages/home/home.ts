@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @Component({
@@ -10,10 +11,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export class HomePage {
  
-
-  constructor(public navCtrl: NavController, private camera: Camera) {
-
-  }
+image: any; 
 
 options: CameraOptions = {
   quality: 100,
@@ -22,13 +20,29 @@ options: CameraOptions = {
   mediaType: this.camera.MediaType.PICTURE
 }
 
+  constructor(public navCtrl: NavController, private camera: Camera, private socialSharing: SocialSharing) {
 
-itemTapped(){
+  }
+
+
+// Check if sharing via email is supported
+socialTapped(){
+	this.socialSharing.shareViaInstagram('my first camera apps', this.image).then(() => {
+  // Sharing via email is possible
+}).catch(() => {	
+  // Sharing via email is not possible
+});
+}
+
+cameraTapped(){
 	this.camera.getPicture(this.options).then((imageData) => {
  // imageData is either a base64 encoded string or a file URI
  // If it's base64:
  let base64Image = 'data:image/jpeg;base64,' + imageData;
+ this.image = base64Image;
 }, (err) => {
  // Handle error
 });
 }
+}
+

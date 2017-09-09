@@ -8,9 +8,10 @@
 
 <ion-content padding>	
 
-<img src="img/default_user.jpg">
+<img src="img/default_user.jpg" *ngIf="!image">
+<img src={{image}} *ngIf="image">
 
-<button ion-button  full color="danger" (click)=itemTapped() > <ion-icon name="camera"></ion-icon> Take image</button>
+<button ion-button  full color="danger" (click)="cameraTapped()" > <ion-icon name="camera"></ion-icon> Take image</button>
 
-<button ion-button full color="secondary" (click)=itemTapped() ><ion-icon name="cloud-upload">   </ion-icon>  Share to FB! </button>
+<button ion-button full color="secondary" (click)="socialTapped()" ><ion-icon name="cloud-upload">   </ion-icon>  Share to Instagram! </button>
   </ion-content>
